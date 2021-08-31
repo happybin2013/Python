@@ -6,15 +6,15 @@ from selenium import webdriver as wd
 from tkinter import *
 from bs4 import BeautifulSoup as bs
 
+#한글 사용가능
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8')
 
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
 # 검색어 입력
-
 sname = input("여행지를 입력해주세요: ")
 if(os.path.isfile(sname + ".csv")):
-    f = open(sname + ".csv","a", encoding="utf-8-sig")
+    f = open(sname + ".csv","a", encoding="utf-8-sig") # open('이름',모드{a추가 r읽기 w쓰기},인코딩 종류)
     print("기존 파일에 추가합니다.")
 else:
     f = open(sname + ".csv","w", encoding="utf-8-sig")
@@ -27,7 +27,7 @@ options.add_argument('headless')
 options.add_argument('window-size=1920x1080')
 options.add_argument("disable-gpu")
 
-driver = wd.Chrome(executable_path='chromedriver.exe', options=options)
+driver = wd.Chrome(executable_path='chromedriver.exe',options=options)
 # main_url = 'https://www.naver.com/'
 main_url = f"https://search.naver.com/search.naver?where=blog&query={sname}&sm=tab_opt&nso=so%3Ar%2Cp%3A1y"
 regNo = '36030B'
